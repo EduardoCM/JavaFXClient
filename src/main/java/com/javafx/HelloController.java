@@ -5,6 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.apache.commons.lang.StringUtils;
 
+import com.castillo.funciones.ClienteImpl;
+import com.castillo.funciones.Clientes;
+import com.castillo.jaxws.clientes.Cliente;
+
 public class HelloController
 {
 
@@ -19,7 +23,18 @@ public class HelloController
         String id = idField.getText();
         String nombre = nameField.getText();
         String lastName = lastNameField.getText();
-
+       
+        Cliente cliente = new Cliente();
+        
+        cliente.setId(Integer.parseInt(id));
+        cliente.setNombre(nombre);
+        cliente.setApellido(lastName);
+        
+        Clientes clientes = new ClienteImpl();
+        
+        clientes.addCliente(cliente);
+        
+        
         StringBuilder builder = new StringBuilder();
 
         if (!StringUtils.isEmpty(id)) {
